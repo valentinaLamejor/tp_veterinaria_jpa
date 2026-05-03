@@ -21,24 +21,24 @@ public class Turno {
 
     @ManyToOne
     @JoinColumn (name="id_cliente")
-    private Integer id_cliente;
+    private Cliente cliente;
 
     @ManyToOne
     @JoinColumn (name="id_veterinario")
-    private Integer id_veterinario;
+    private Veterinario veterinario;
 
     @OneToOne
     @JoinColumn (name="id_mascota")
-    private Integer id_mascota;
+    private Mascota mascota;
 
-    public Turno(LocalDate fecha, Time hora, String motivo, estado estado, int id_cliente, int id_veterinario, int id_mascota) {
+    public Turno(LocalDate fecha, Time hora, String motivo, estado estado, Cliente cliente, Veterinario veterinario, Mascota mascota) {
         this.fecha = fecha;
         this.hora = hora;
         this.motivo = motivo;
         this.estado = estado;
-        this.id_cliente = id_cliente;
-        this.id_veterinario = id_veterinario;
-        this.id_mascota = id_mascota;
+        this.cliente = cliente;
+        this.veterinario = veterinario;
+        this.mascota = mascota;
     }
 
     public Turno() {
@@ -84,27 +84,28 @@ public class Turno {
         this.estado = estado;
     }
 
-    public int getId_cliente() {
-        return id_cliente;
+
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setId_cliente(int id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public int getId_veterinario() {
-        return id_veterinario;
+    public Veterinario getVeterinario() {
+        return veterinario;
     }
 
-    public void setId_veterinario(int id_veterinario) {
-        this.id_veterinario = id_veterinario;
+    public void setVeterinario(Veterinario veterinario) {
+        this.veterinario = veterinario;
     }
 
-    public int getId_mascota() {
-        return id_mascota;
+    public Mascota getMascota() {
+        return mascota;
     }
 
-    public void setId_mascota(int id_mascota) {
-        this.id_mascota = id_mascota;
+    public void setMascota(Mascota mascota) {
+        this.mascota = mascota;
     }
 }
