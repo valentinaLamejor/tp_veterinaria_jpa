@@ -7,7 +7,8 @@ import jakarta.persistence.*;
 public class Veterinario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_veterinario;
+    @Column(name="id_veterinario")
+    private Integer idVeterinario;
     private String nombre;
     private String apellido;
     private String matricula;
@@ -15,12 +16,24 @@ public class Veterinario {
     private String telefono;
     private String email;
 
-    public int getId_veterinario() {
-        return id_veterinario;
+    public Veterinario( String nombre, String apellido, String matricula, String especialidad, String telefono, String email) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.matricula = matricula;
+        this.especialidad = especialidad;
+        this.telefono = telefono;
+        this.email = email;
     }
 
-    public void setId_veterinario(int id_veterinario) {
-        this.id_veterinario = id_veterinario;
+    public Veterinario() {
+    }
+
+    public Integer getId_veterinario() {
+        return idVeterinario;
+    }
+
+    public void setId_veterinario(Integer id_veterinario) {
+        this.idVeterinario = id_veterinario;
     }
 
     public String getNombre() {
@@ -68,16 +81,6 @@ public class Veterinario {
     }
 
     public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Veterinario(int id_veterinario, String nombre, String apellido, String matricula, String especialidad, String telefono, String email) {
-        this.id_veterinario = id_veterinario;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.matricula = matricula;
-        this.especialidad = especialidad;
-        this.telefono = telefono;
         this.email = email;
     }
 }

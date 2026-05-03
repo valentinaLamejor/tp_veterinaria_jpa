@@ -7,18 +7,19 @@ import jakarta.persistence.*;
 public class Mascota {
     @Id //para declarar id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //para usar de auto_increment
-    private int id_mascota;
+    @Column(name="id_mascota")
+    private Integer idMascota;
+
     private String nombre;
     private String especie;
     private String raza;
     private int edad;
-    private double peso;
+    private Double peso;
     @ManyToOne //especifica el tipo de relacion, en este caso muchos a uno
-    @JoinColumn(name = "id_cliente") // identifica la columna de la FK
+    @JoinColumn (name = "id_cliente") // identifica la columna de la FK
     private Cliente mascota_cliente;
 
-    public Mascota(int id_mascota, String nombre, String especie, String raza, int edad, double peso, Cliente mascota_cliente) {
-        this.id_mascota = id_mascota;
+    public Mascota( String nombre, String especie, String raza, int edad, Double peso, Cliente mascota_cliente) {
         this.nombre = nombre;
         this.especie = especie;
         this.raza = raza;
@@ -26,13 +27,15 @@ public class Mascota {
         this.peso = peso;
         this.mascota_cliente=mascota_cliente;
     }
-
-    public int getId_mascota() {
-        return id_mascota;
+    public Mascota() {
     }
 
-    public void setId_mascota(int id_mascota) {
-        this.id_mascota = id_mascota;
+    public int getId_mascota() {
+        return idMascota;
+    }
+
+    public void setId_mascota(Integer id_mascota) {
+        this.idMascota = id_mascota;
     }
 
     public String getNombre() {
@@ -67,7 +70,7 @@ public class Mascota {
         this.edad = edad;
     }
 
-    public double getPeso() {
+    public Double getPeso() {
         return peso;
     }
 

@@ -1,7 +1,7 @@
 package veterinaria_tp_jpa.demo2.Model;
 
 import jakarta.persistence.*;
-import veterinaria_tp_jpa.demo2.Enums.Eestado;
+import veterinaria_tp_jpa.demo2.Enums.estado;
 
 import java.sql.Time;
 import java.time.LocalDate;
@@ -11,25 +11,27 @@ import java.time.LocalDate;
 public class Turno {
     @Id //para declarar id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //para usar de auto_increment
-    private int id_turno;
+    @Column(name="id_turno")
+    private Integer idTurno;
     private LocalDate fecha;
     private Time hora;
     private String motivo;
-    private Eestado estado;
+    @Enumerated(EnumType.STRING)
+    private estado estado;
+
     @ManyToOne
     @JoinColumn (name="id_cliente")
-    private int id_cliente;
+    private Integer id_cliente;
 
     @ManyToOne
     @JoinColumn (name="id_veterinario")
-    private int id_veterinario;
+    private Integer id_veterinario;
 
     @OneToOne
     @JoinColumn (name="id_mascota")
-    private int id_mascota;
+    private Integer id_mascota;
 
-    public Turno(int id_turno, LocalDate fecha, Time hora, String motivo, Eestado estado, int id_cliente, int id_veterinario, int id_mascota) {
-        this.id_turno = id_turno;
+    public Turno(LocalDate fecha, Time hora, String motivo, estado estado, int id_cliente, int id_veterinario, int id_mascota) {
         this.fecha = fecha;
         this.hora = hora;
         this.motivo = motivo;
@@ -39,12 +41,15 @@ public class Turno {
         this.id_mascota = id_mascota;
     }
 
-    public int getId_turno() {
-        return id_turno;
+    public Turno() {
     }
 
-    public void setId_turno(int id_turno) {
-        this.id_turno = id_turno;
+    public Integer getId_turno() {
+        return idTurno;
+    }
+
+    public void setId_turno(Integer id_turno) {
+        this.idTurno = id_turno;
     }
 
     public LocalDate getFecha() {
@@ -71,11 +76,11 @@ public class Turno {
         this.motivo = motivo;
     }
 
-    public Eestado getEstado() {
+    public estado getEstado() {
         return estado;
     }
 
-    public void setEstado(Eestado estado) {
+    public void setEstado(estado estado) {
         this.estado = estado;
     }
 
