@@ -33,6 +33,7 @@ public class Cliente {
     public Integer getIdCliente() {
         return idCliente;
     }
+    
 
     public void setIdCliente(Integer id_cliente) {
         this.idCliente = id_cliente;
